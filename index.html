@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEBULA - Sistema Avançado de Análise Climática Agrícola</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container-particulas" id="particles"></div>
+    <div class="fundo-grade"></div>
+    
+    <header class="header-futurista">
+
+        <div class="conteudo-cabecalho">
+            <div class="container-logo">
+
+                <div class="holograma-logo">
+                    <i class="fas fa-satellite-dish"></i>
+                    <div class="aneis-logo">
+                        <div class="ring ring-1"></div>
+                        <div class="ring ring-2"></div>
+
+                        <div class="ring ring-3"></div>
+                    </div>
+                </div>
+                
+                <div class="texto-logo">
+                    <h1>NEBULA</h1>
+                    <span class="subtitle">SISTEMA AVANÇADO DE ANÁLISE CLIMÁTICA</span>
+                </div>
+            </div>
+            
+            <div class="indicadores-status">
+
+                <div class="indicator active">
+                    <div class="ponto-indicador"></div>
+                    <span>SISTEMA ONLINE</span>
+
+                </div>
+                <div class="indicator">
+                    <div class="ponto-indicador"></div>
+                    <span>DADOS SINCRONIZADOS</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    
+    <main class="container-principal">
+        <!-- painel de controle central -->
+        <section class="painel-controle">
+
+            <div class="cabecalho-painel">
+
+                <h2><i class="fas fa-satellite"></i> PAINEL DE CONTROLE</h2>
+                <div class="status-painel">
+                    <div class="luz-status"></div>
+                    <span>OPERACIONAL</span>
+                </div>
+
+            </div>
+            
+            <div class="grade-controle">
+                <div class="grupo-controle">
+
+                    <label class="rotulo-controle">
+                        <i class="fas fa-map-marker-alt"></i>
+                        ESTADO
+                    </label>
+
+                    <div class="container-selecao">
+                        <select id="selecao-estado" class="selecao-futurista">
+                            <option value="">SELECIONAR ESTADO</option>
+                        </select>
+                        <div class="brilho-selecao"></div>
+                    </div>
+
+                </div>
+                
+                <div class="grupo-controle">
+
+                    <label class="rotulo-controle">
+                        <i class="fas fa-city"></i>
+                        CIDADE
+                    </label>
+
+                    <div class="container-selecao">
+                        <select id="selecao-cidade" class="selecao-futurista" disabled>
+                            <option value="">SELECIONAR CIDADE</option>
+                        </select>
+                        <div class="brilho-selecao"></div>
+                    </div>
+                </div>
+                
+                <div class="grupo-controle">
+                    <label class="rotulo-controle">
+                        <i class="fas fa-seedling"></i>
+                        CULTURA AGRÍCOLA
+                    </label>
+                    <div class="container-selecao">
+
+                        <select id="selecao-cultura" class="selecao-futurista">
+                            <option value="">SELECIONAR CULTURA</option>
+                            <option value="soja">SOJA</option>
+                            <option value="milho">MILHO</option>
+                            <option value="cafe">CAFÉ</option>
+                            <option value="algodao">ALGODÃO</option>
+                            <option value="cana">CANA-DE-AÇÚCAR</option>
+                            <option value="feijao">FEIJÃO</option>
+                            <option value="arroz">ARROZ</option>
+                            <option value="trigo">TRIGO</option>
+                            <option value="frutas">FRUTICULTURA</option>
+                            <option value="hortalicas">HORTALIÇAS</option>
+                        </select>
+
+                        <div class="brilho-selecao"></div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- painel meteorologico -->
+        <section class="painel-clima oculto" id="painel-clima">
+            <div class="cabecalho-painel">
+
+                <h2><i class="fas fa-cloud-sun"></i> ANÁLISE METEOROLÓGICA</h2>
+
+                <div class="indicador-sincronizacao">
+
+                    <i class="fas fa-sync-alt"></i>
+                    <span>SINCRONIZANDO</span>
+                </div>
+            </div>
+            
+
+            <div class="exibicao-clima-principal">
+                <div class="info-localizacao">
+                    <h3 id="local-atual"></h3>
+                    <p id="data-atual"></p>
+                </div>
+                
+                <div class="nucleo-clima">
+                    <div class="container-icone-clima">
+                        <div class="holograma-clima">
+                            <img id="icone-clima" src="" alt="Condição climática">
+                            <div class="efeito-holograma"></div>
+
+                        </div>
+                    </div>
+                    
+                    <div class="exibicao-temperatura">
+                        <div class="temperatura-principal" id="temperatura-atual"></div>
+                        <div class="descricao-temperatura" id="descricao-clima"></div>
+                    </div>
+                    
+                    <div class="metricas-clima">
+                        <div class="metric">
+                            <div class="icone-metrica">
+                                <i class="fas fa-temperature-high"></i>
+                            </div>
+                            <div class="dados-metrica">
+                                <span class="rotulo-metrica">MÁXIMA</span>
+                                <span class="valor-metrica" id="temp-max"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="icone-metrica">
+                                <i class="fas fa-temperature-low"></i>
+                            </div>
+                            <div class="dados-metrica">
+                                <span class="rotulo-metrica">MÍNIMA</span>
+                                <span class="valor-metrica" id="temp-min"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="icone-metrica">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="dados-metrica">
+                                <span class="rotulo-metrica">UMIDADE</span>
+                                <span class="valor-metrica" id="umidade"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="metric">
+                            <div class="icone-metrica">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <div class="dados-metrica">
+                                <span class="rotulo-metrica">VENTO</span>
+                                <span class="valor-metrica" id="vento"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- cards de dados -->
+            <div class="grade-cartoes-dados">
+                <div class="cartao-dados" id="cartao-temperatura">
+                    <div class="cabecalho-cartao">
+                        <div class="icone-cartao">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <h4>ANÁLISE TÉRMICA</h4>
+                        <div class="status-cartao active"></div>
+                    </div>
+                    <div class="conteudo-cartao" id="detalhes-temperatura"></div>
+                </div>
+                
+                <div class="cartao-dados" id="cartao-umidade">
+                    <div class="cabecalho-cartao">
+                        <div class="icone-cartao">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h4>UMIDADE & PRESSÃO</h4>
+                        <div class="status-cartao active"></div>
+                    </div>
+                    <div class="conteudo-cartao" id="detalhes-umidade"></div>
+                </div>
+                
+                <div class="cartao-dados" id="cartao-vento">
+                    <div class="cabecalho-cartao">
+                        <div class="icone-cartao">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h4>ANÁLISE EÓLICA</h4>
+                        <div class="status-cartao active"></div>
+                    </div>
+                    <div class="conteudo-cartao" id="detalhes-vento"></div>
+                </div>
+                
+                <div class="cartao-dados" id="cartao-sol">
+                    <div class="cabecalho-cartao">
+                        <div class="icone-cartao">
+                            <i class="fas fa-sun"></i>
+                        </div>
+                        <h4>RADIAÇÃO SOLAR</h4>
+                        <div class="status-cartao active"></div>
+                    </div>
+                    <div class="conteudo-cartao" id="detalhes-sol"></div>
+                </div>
+            </div>
+            
+            <!-- previsao temporal -->
+            <div class="secao-previsao">
+                <div class="cabecalho-secao">
+                    <h3><i class="fas fa-calendar-alt"></i> PROJEÇÃO TEMPORAL</h3>
+                    <div class="indicador-linha-tempo">
+                        <div class="ponto-linha-tempo active"></div>
+                        <div class="ponto-linha-tempo"></div>
+                        <div class="ponto-linha-tempo"></div>
+                        <div class="ponto-linha-tempo"></div>
+                        <div class="ponto-linha-tempo"></div>
+                    </div>
+                </div>
+                <div class="linha-tempo-previsao" id="previsao-dias"></div>
+            </div>
+
+
+        </section>
+
+
+        <!-- recomendações agrícolas -->
+
+        <section class="sistema-agricola oculto" id="recomendacoes-agricolas">
+            <div class="cabecalho-painel">
+                <h2><i class="fas fa-brain"></i> SISTEMA INTELIGENTE AGRÍCOLA</h2>
+
+                <div class="indicador-ia">
+                    <div class="pulso-ia"></div>
+                    <span>RECOMENDAÇÃO ATIVA</span>
+                </div>
+
+            </div>
+            
+            <div class="grade-recomendacoes">
+
+                <div class="cartao-recomendacao">
+                    <div class="cabecalho-cartao">
+                        <div class="container-icone-cartao">
+
+                            <i class="fas fa-tractor"></i>
+                            <div class="brilho-icone"></div>
+                        </div>
+
+                        <h4>MANEJO INTELIGENTE</h4>
+
+                        <div class="indicador-prioridade high">ALTA</div>
+
+                    </div>
+
+                    <div class="conteudo-cartao" id="recomendacoes-manejo"></div>
+                </div>
+                
+                <div class="cartao-recomendacao">
+                    
+                    <div class="cabecalho-cartao">
+                        <div class="container-icone-cartao">
+
+                            <i class="fas fa-cloud-rain"></i>
+                            <div class="brilho-icone"></div>
+                        </div>
+
+                        <h4>SISTEMA DE IRRIGAÇÃO</h4>
+
+                        <div class="indicador-prioridade medium">MÉDIA</div>
+                    </div>
+
+                    <div class="conteudo-cartao" id="recomendacoes-irrigacao"></div>
+                </div>
+                
+                <div class="cartao-recomendacao">
+
+                    <div class="cabecalho-cartao">
+                        <div class="container-icone-cartao">
+
+                            <i class="fas fa-bug"></i>
+                            <div class="brilho-icone"></div>
+                        </div>
+                        <h4>CONTROLE FITOSSANITÁRIO</h4>
+
+                        <div class="indicador-prioridade low">BAIXA</div>
+
+                    </div>
+                    <div class="conteudo-cartao" id="recomendacoes-pragas"></div>
+
+                </div>
+                
+                <div class="cartao-recomendacao">
+
+                    <div class="cabecalho-cartao">
+                        <div class="container-icone-cartao">
+                            <i class="fas fa-calendar-check"></i>
+                            <div class="brilho-icone"></div>
+                        </div>
+
+                        <h4>PLANEJAMENTO ESTRATÉGICO</h4>
+
+                        <div class="indicador-prioridade high">ALTA</div>
+                    </div>
+
+                    <div class="conteudo-cartao" id="recomendacoes-planejamento"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- footer  -->
+    <footer class="footer-futurista">
+        <div class="conteudo-rodape">
+
+            <div class="secao-rodape">
+                <h4>NEBULA SYSTEM</h4>
+                <p>Sistema avançado de análise climática para agricultura de precisão</p>
+            </div>
+
+            <div class="secao-rodape">
+                <h4>FONTES DE DADOS</h4>
+                <p>
+                    <a href="https://openweathermap.org/" target="_blank">OpenWeatherMap API</a> | 
+                    <a href="https://servicodados.ibge.gov.br/api/docs/localidades" target="_blank">IBGE Localidades</a>
+                </p>
+            </div>
+
+            <div class="secao-rodape">
+                <div class="status-sistema">
+                    <div class="ponto-status online"></div>
+                    <span>SISTEMA OPERACIONAL</span>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
